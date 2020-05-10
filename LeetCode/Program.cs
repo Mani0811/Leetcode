@@ -13,11 +13,7 @@ namespace LeetCode
         {
             var addTn = new AddTwoNumber();
             addTn.Run();
-
             EasyQuestionDriver();
-
-           
-
         }
 
         static void EasyQuestionDriver()
