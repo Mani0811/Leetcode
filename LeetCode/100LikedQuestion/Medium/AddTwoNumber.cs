@@ -46,7 +46,7 @@ namespace LeetCode._100LikedQuestion.Medium
                 }
             }
             AddTwoNumbersUtil(curl1, curl2);
-            if (diff < 0)
+            if (diff > 0)
                 AddExtraNode(l1, curl1);
             else if (diff > 0)
                 AddExtraNode(l2, curl2);

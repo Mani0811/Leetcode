@@ -1,4 +1,5 @@
-﻿using LeetCode._100LikedQuestion.Medium;
+﻿using LeetCode._100LikedQuestion;
+using LeetCode._100LikedQuestion.Medium;
 using LeetCode.common;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ namespace LeetCode
     {
         static void Main(string[] args)
         {
-            var addTn = new AddTwoNumber();
+            var addTn = new LongestSubstringWithoutRepeatingCharactersSolu();
             addTn.Run();
             EasyQuestionDriver();
         }
