@@ -5,7 +5,7 @@ using System.Text;
 
 namespace LeetCode._100LikedQuestion.Medium
 {
-    class _3SumSolu : BaseClass
+    class PhoneNumberSolu : BaseClass
     {
         public override void Run()
         {
