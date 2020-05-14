@@ -12,7 +12,7 @@ namespace LeetCode
     {
         static void Main(string[] args)
         {
-            var addTn = new LongestPalindromicSubstringSolu();
+            var addTn = new _3SumSolu();
             addTn.Run();
             EasyQuestionDriver();
         }
