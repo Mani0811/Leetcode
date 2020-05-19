@@ -28,8 +28,6 @@ namespace LeetCode._100LikedQuestion.Medium
                     next = next.next;
                 }
             }
-            
-
             while (next != null)
             {
                 curr = curr.next;
