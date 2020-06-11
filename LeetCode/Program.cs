@@ -12,7 +12,7 @@ namespace LeetCode
     {
         static void Main(string[] args)
         {
-            var addTn = new _3SumSolu();
+            var addTn = new WordBreakSolu();
             addTn.Run();
             EasyQuestionDriver();
         }
