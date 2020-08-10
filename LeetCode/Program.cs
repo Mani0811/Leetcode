@@ -1,6 +1,7 @@
 ﻿using LeetCode._100LikedQuestion;
 using LeetCode._100LikedQuestion.Medium;
 using LeetCode.common;
+using LeetCode.DataStructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,7 @@ namespace LeetCode
     {
         static void Main(string[] args)
         {
-            var addTn = new WordBreakSolu();
+            var addTn = new CourseScheduleSolu();
             addTn.Run();
             EasyQuestionDriver();
         }
