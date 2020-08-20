@@ -6,18 +6,61 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace LeetCode
 {
-    class Program
+    public class TestStatic
     {
-        static void Main(string[] args)
+        public static int TestValue;
+
+        public TestStatic()
         {
-            var addTn = new CourseScheduleSolu();
-            addTn.Run();
-            EasyQuestionDriver();
+            if (TestValue == 0)
+            {
+                TestValue = 5;
+            }
+        }
+        static TestStatic()
+        {
+            if (TestValue == 0)
+            {
+                TestValue = 10;
+            }
+
         }
 
+        public void Print()
+        {
+            if (TestValue == 5)
+            {
+                TestValue = 6;
+            }
+            Console.WriteLine("TestValue : " + TestValue);
+
+        }
+    }
+    class Program
+    {
+
+        private static string result;
+        public static void Main()
+        {
+
+           
+
+            var addTn = new KthSmallestElementInBST();
+            addTn.Run();
+            TestStatic t = new TestStatic();
+            t.Print();
+            EasyQuestionDriver();
+        }
+        static async Task<string> SaySomething()
+        {
+            await Task.Delay(5);
+            result = "Hello world!";
+            return "Something";
+        }
         static void EasyQuestionDriver()
         {
             var solu = new Solution();
@@ -150,7 +193,7 @@ namespace LeetCode
                 num = num / 10;
             }
 
-            var z= (negativeFlag == true) ?
+            var z = (negativeFlag == true) ?
                                  -rev_num : rev_num;
             return z;
         }
