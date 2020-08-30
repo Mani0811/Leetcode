@@ -47,7 +47,7 @@ namespace LeetCode
         private static string result;
         public static void Main()
         {
-            var addTn = new EasyStrongPermutation();
+            var addTn = new MissingNumber();
             addTn.Run();
             TestStatic t = new TestStatic();
             t.Print();

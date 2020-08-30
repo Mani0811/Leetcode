@@ -20,9 +20,24 @@ namespace LeetCode.Interview.NationalInstrument
         public static void PrintEasyStrongPermutation()
         {
             var n = int.Parse(Console.ReadLine());
-            var input = Console.ReadLine().Split(' ').Select(i => int.Parse(i)).ToArray();
-            Permuatation(input, 0, n - 1);
-            Console.WriteLine(maxSum);
+            var a = Console.ReadLine().Split(' ').Select(i => int.Parse(i)).ToArray();
+            Array.Sort(a);
+            int i = 0; // first position
+            int j = n - 1; // last position
+                           // sort using quick sort
+            long sum = 0;
+            while (i < j)
+            {
+                sum += Math.Abs(a[i] - a[j]); // calculate the strength of the sequence by summing the difference between adjacent integers
+                ++i; // increase i
+                if (i >= j) // when i meets j, break loop
+                    break;
+                sum += Math.Abs(a[i] - a[j]);
+                --j;
+            }
+            sum += Math.Abs(a[0] - a[j]);
+            //Permuatation(input, 0, n - 1);
+            Console.WriteLine(sum);
             
         }
 
