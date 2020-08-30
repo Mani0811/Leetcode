@@ -16,7 +16,7 @@ namespace LeetCode._100LikedQuestion.Medium
             root.left.right = new TreeNode(4);
             root.left.left = new TreeNode(2);
             root.left.left.left = new TreeNode(1);
-            var result = KthSmallest(root, 1);
+            var result = KthSmallest(root, 3);
         }
 
         public int KthSmallest(TreeNode root, int k)
