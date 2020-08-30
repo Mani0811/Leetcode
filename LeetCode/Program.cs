@@ -2,6 +2,7 @@
 using LeetCode._100LikedQuestion.Medium;
 using LeetCode.common;
 using LeetCode.DataStructure;
+using LeetCode.Interview.NationalInstrument;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -46,10 +47,7 @@ namespace LeetCode
         private static string result;
         public static void Main()
         {
-
-           
-
-            var addTn = new KthSmallestElementInBST();
+            var addTn = new EasyStrongPermutation();
             addTn.Run();
             TestStatic t = new TestStatic();
             t.Print();
