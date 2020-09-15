@@ -44,21 +44,21 @@ namespace LeetCode
     class Program
     {
 
-        private static string result;
+        //private static string result;
         public static void Main()
         {
-            var addTn = new MissingNumber();
+            var addTn = new MergekSortedLists();
             addTn.Run();
             TestStatic t = new TestStatic();
             t.Print();
             EasyQuestionDriver();
         }
-        static async Task<string> SaySomething()
-        {
-            await Task.Delay(5);
-            result = "Hello world!";
-            return "Something";
-        }
+        //static async Task<string> SaySomething()
+        //{
+        //    await Task.Delay(5);
+        //    result = "Hello world!";
+        //    return "Something";
+        //}
         static void EasyQuestionDriver()
         {
             var solu = new Solution();

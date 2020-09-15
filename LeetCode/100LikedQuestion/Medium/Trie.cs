@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace LeetCode._100LikedQuestion.Medium
+namespace LeetCode
 {
     class Trie : BaseClass  
     {

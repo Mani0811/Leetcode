@@ -19,6 +19,7 @@ namespace LeetCode.Interview.NationalInstrument
             {
                 var n = int.Parse(Console.ReadLine());
                 var a = Console.ReadLine().Split(' ').Select(i => int.Parse(i)).ToArray();
+                Array.Sort(a);
                 int k = 2;
                 for (int j = 0; j < n; j++)
                 {
