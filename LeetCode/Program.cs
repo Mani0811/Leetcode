@@ -47,7 +47,7 @@ namespace LeetCode
         //private static string result;
         public static void Main()
         {
-            var addTn = new DecodeWays();
+            var addTn = new FindtheDuplicateNumber();
             addTn.Run();
             TestStatic t = new TestStatic();
             t.Print();
