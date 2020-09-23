@@ -47,7 +47,7 @@ namespace LeetCode
         //private static string result;
         public static void Main()
         {
-            var addTn = new FindtheDuplicateNumber();
+            var addTn = new MaximalRectangleSolu();
             addTn.Run();
             TestStatic t = new TestStatic();
             t.Print();

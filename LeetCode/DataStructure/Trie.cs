@@ -6,7 +6,7 @@ using System.Text;
 namespace LeetCode
 {
     class Trie : BaseClass  
-    {
+    {   
         public sealed override void Run()
         {
             base.Run();
