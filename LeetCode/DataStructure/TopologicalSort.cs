@@ -9,7 +9,27 @@ namespace LeetCode.DataStructure
     {
         public sealed override void Run()
         {
-            base.Run();
+
+            var g = new Graph(5);
+
+            g.AddEdge(1, 0);
+            g.AddEdge(0, 2);
+            g.AddEdge(2, 0);
+            g.AddEdge(0, 3);
+            g.AddEdge(3, 4);
+
+            if (g.IsCyclic(5,g))
+                Console.WriteLine("Graph contains cycle");
+            else
+                Console.WriteLine("Graph doesn't contains cycle");
+
+            var g2 = new Graph(3);
+            g2.AddEdge(0, 1);
+            g2.AddEdge(1, 2);
+            if (g2.IsCyclic(3,g2))
+                Console.WriteLine("Graph contains cycle");
+            else
+                Console.WriteLine("Graph doesn't contains cycle");
         }
 
         // DFS with stack.
@@ -38,17 +58,13 @@ namespace LeetCode.DataStructure
             return topoList.ToArray();
         }
 
-
-
-
-
         private void DFS(int i, Graph graph, bool[] visited, Stack<int> topoList)
         {
-            var eadges = graph.adj[i];
+            var edges = graph.adj[i];
 
-            for (int j = 0; j < eadges.Count; j++)
+            for (int j = 0; j < edges.Count; j++)
             {
-                var vert = eadges[j];
+                var vert = edges[j];
                 if (visited[vert]) continue;
                 DFS(vert, graph, visited, topoList);
                 topoList.Push(vert);
@@ -62,9 +78,7 @@ namespace LeetCode.DataStructure
 
         // No. of vertices  
         public int V;
-
-        // Adjacency List as ArrayList 
-        // of ArrayList's  
+ 
         public List<List<int>> adj;
 
         //Constructor  
@@ -97,7 +111,7 @@ namespace LeetCode.DataStructure
 
             return false;
         }
-        private bool IsCyclic(int n, Graph graph)
+        internal bool IsCyclic(int n, Graph graph)
         {
 
             bool[] visited = new bool[n];
@@ -113,7 +127,7 @@ namespace LeetCode.DataStructure
             return false;
 
         }
-        private void AddEdge(int sou, int dest)
+        internal void AddEdge(int sou, int dest)
         {
             adj[sou].Add(dest);
         }

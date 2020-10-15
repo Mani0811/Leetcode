@@ -58,6 +58,7 @@ namespace LeetCode
             if (si > ei)
                 return si - 1;
             int mid = (si + ei) / 2;
+
             if (value < endTime[mid])
             {
                 return binarySearch(endTime, value, si, mid - 1);

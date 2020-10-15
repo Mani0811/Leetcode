@@ -15,8 +15,8 @@ namespace LeetCode
                       {1, 9, 20, 1000},
                       {23, 34, 90, 2000}};
 
-            //MergeKSortedArrays(arr, arr.GetLength(0));
-            //var output = MergeKLists(new List<int>[] { new List<int> { 1, 4, 5 }, new List<int> { 1, 3, 4 }, new List<int> { 2, 6 } });
+            MinHeap.MergeKSortedArrays(arr, arr.GetLength(0));
+           // var output = MergeKLists(new List<int>[] { new List<int> { 1, 4, 5 }, new List<int> { 1, 3, 4 }, new List<int> { 2, 6 } });
 
 
         }
@@ -148,7 +148,7 @@ namespace LeetCode
 
 
 
-            static void MergeKSortedArrays(int[,] arr, int k)
+           public static void MergeKSortedArrays(int[,] arr, int k)
             {
                 MinHeapNode[] hArr = new MinHeapNode[k];
                 int resultSize = 0;

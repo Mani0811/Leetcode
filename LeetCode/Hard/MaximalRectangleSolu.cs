@@ -11,7 +11,7 @@ namespace LeetCode
         {
             var input = new char[][]
            {
-            new char[]{'1' ,'0', '1', '0', '0'},
+            new char[]{'1' ,'1', '1', '1', '0'},
             new char[]{'1','0', '1','1', '1'},
             new char[]{'1' ,'1' ,'1', '1', '1'},
             new char[]{'1', '0', '0', '1', '0'},
@@ -19,7 +19,9 @@ namespace LeetCode
            };
             input = new char[][]
            {
-                new char[]{'1'},
+                new char[]{'1' ,'1', '1', '1'},
+                new char[]{'1' ,'1', '1', '1'},
+                new char[]{'1' ,'1', '1', '1'},
            };
             var output = MaximalRectangle(input);
         }
@@ -37,16 +39,16 @@ namespace LeetCode
                         dp[0][j] = int.Parse(matrix[i][j].ToString());
                     }
                 }
-                dp[i][0] = int.Parse(matrix[i][0].ToString());
             }
             for (int i = 1; i < matrix.Length; i++)
             {
-                for (int j = 1; j < matrix[i].Length; j++)
+                for (int j = 0; j < matrix[i].Length; j++)
                 {
+                    if(matrix[i][j]=='1')
                     dp[i][j] = int.Parse(matrix[i - 1][j].ToString()) + int.Parse(matrix[i][j].ToString());
                 }
             }
-            for (int i = 1; i < matrix.Length; i++)
+            for (int i = 0; i < matrix.Length; i++)
             {
                 CalculateMaximumAreaForRow(i, dp);
             }

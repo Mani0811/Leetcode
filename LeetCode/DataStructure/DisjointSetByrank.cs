@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace LeetCode.DataStructure
+namespace LeetCode
 {
     //   * Disjoint sets using path compression and union by rank
     //* Supports 3 operations

@@ -2,6 +2,7 @@
 using LeetCode._100LikedQuestion.Medium;
 using LeetCode.common;
 using LeetCode.DataStructure;
+using LeetCode.Facebook;
 using LeetCode.Interview.NationalInstrument;
 using System;
 using System.Collections.Generic;
@@ -41,13 +42,15 @@ namespace LeetCode
 
         }
     }
+    
     class Program
     {
+       
 
         //private static string result;
         public static void Main()
         {
-            var addTn = new MaximalRectangleSolu();
+            var addTn = new LeftmostColumnwithatLeastaOne();
             addTn.Run();
             TestStatic t = new TestStatic();
             t.Print();
