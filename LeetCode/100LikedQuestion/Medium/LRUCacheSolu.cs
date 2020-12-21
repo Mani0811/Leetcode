@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http.Headers;
@@ -8,8 +9,14 @@ namespace LeetCode._100LikedQuestion.Medium
 {
     public class LRUCache : BaseClass
     {
+        /// <summary>
+        /// double linked list is that the node can remove itself without other reference.  it takes constant time to add and remove nodes from the head or tail.
+        /// </summary>
+
+        static Object LOCK;
         public override void Run()
         {
+            LOCK = new object();
             var cache = new LRUCache(3);
             cache.Put(1, 1);
             cache.Put(2, 2);
@@ -24,19 +31,22 @@ namespace LeetCode._100LikedQuestion.Medium
         }
 
         
-       public class Node
+       public class DoubleLinkList
         {
            public int key, value;
-           public Node next, prev;
-
-          public  Node(int key, int value)
+           public DoubleLinkList next, prev;
+            public DoubleLinkList()
+            {
+                
+            }
+            public  DoubleLinkList(int key, int value)
             {
                 this.key = key;
                 this.value = value;
             }
         }
-        Node head, tail;
-        Dictionary<int, Node> map;
+        DoubleLinkList head, tail;
+        ConcurrentDictionary<int, DoubleLinkList> map;
         int size;
 
         public LRUCache()
@@ -47,45 +57,45 @@ namespace LeetCode._100LikedQuestion.Medium
         public LRUCache(int capacity)
         {
             size = capacity;
-            head = tail = null;
-            map = new Dictionary<int, Node>();
+            head = tail = new DoubleLinkList();
+            map = new ConcurrentDictionary<int, DoubleLinkList>();
         }
 
         public int Get(int key)
         {
-            if (map.ContainsKey(key))
-            {
-                Node node = map[key];
-                remove(node);
-                setHead(node);
-                return node.value;
-            }
+                if (map.ContainsKey(key))
+                {
+                    DoubleLinkList node = map[key];
+                    removeNode(node);
+                    AddNodeInFront(node);
+                    return node.value;
+                }
             return -1;
         }
 
         public void Put(int key, int value)
         {
-            if (map.ContainsKey(key))
-            {
-                Node node = map[key];
-                node.value = value;
-                remove(node);
-                setHead(node);
-            }
-            else
-            {
-                if (map.Count == size)
+                if (map.ContainsKey(key))
                 {
-                    map.Remove(tail.key);
-                    remove(tail);
+                    DoubleLinkList node = map[key];
+                    node.value = value;
+                    removeNode(node);
+                    AddNodeInFront(node);
                 }
-                Node node = new Node(key, value);
-                map.Add(key, node);
-                setHead(node);
-            }
+                else
+                {
+                    if (map.Count == size)
+                    {
+                        //map.Remove(tail.key);
+                        removeNode(tail);
+                    }
+                    DoubleLinkList node = new DoubleLinkList(key, value);
+                    //map.AddOrUpdate(key, node);
+                    AddNodeInFront(node);
+                }
         }
 
-        void remove(Node node)
+        void removeNode(DoubleLinkList node)
         {
             if (node.prev != null)
             {
@@ -104,18 +114,21 @@ namespace LeetCode._100LikedQuestion.Medium
                 tail = node.prev;
             }
         }
-        void setHead(Node node)
+        void AddNodeInFront(DoubleLinkList node)
         {
-            node.next = head;
-            node.prev = null;
-            if (head != null)
+            lock (node)
             {
-                head.prev = node;
-            }
-            head = node;
-            if (tail == null)
-            {
-                tail = node;
+                node.next = head;
+                node.prev = null;
+                if (head != null)
+                {
+                    head.prev = node;
+                }
+                head = node;
+                if (tail == null)
+                {
+                    tail = node;
+                }
             }
         }
     }

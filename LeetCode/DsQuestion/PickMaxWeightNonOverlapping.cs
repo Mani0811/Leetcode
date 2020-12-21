@@ -16,6 +16,31 @@ namespace LeetCode
             var endTime = new int[] { 27, 27, 20, 7, 14, 22, 20, 24, 19, 27 };
             var profit = new int[] { 6, 1, 4, 2, 3, 6, 5, 6, 9, 8 };
             var result = JobScheduling(startTime, endTime, profit);
+            var mat = new int[,]
+            { { 1, 1, 1, 1, 0 },
+                    { 0, 1, 0, 1, 1 },
+                    { 1, 0, 0, 0, 1 },
+                    { 0, 1, 0, 1, 0 },
+                    { 0, 1, 0, 0, 1 } };
+
+            var output = minimunMoves(5, 5, mat);
+        }
+
+        static int minimunMoves(int r, int c, int[,] mat)
+        {
+            int totalCount = 0;
+            var midC = (c) / 2;
+            for (int j = 0; j < r; j++)
+            {
+                int count =0;
+                for (int i = 0; i < midC; i++)
+                {
+                    if (mat[j, i] == mat[j, c - 1 - i]) continue;
+                    count++;
+                }
+                totalCount += count/2+count%2;
+            }
+            return totalCount;
         }
 
         /*

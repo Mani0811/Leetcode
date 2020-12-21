@@ -9,79 +9,45 @@ namespace LeetCode.Facebook
         public override void Run()
         {
 
-           
+
             var bm = new BinaryMatrix(2, 2);
-            var m =new int[][]
+            var m = new int[][]
                 {
 new int[]{1,3},
 new int[]{2,3},
                 };
             bm.Intialize(m);
-           var output = LeftMostColumnWithOne(bm);
-            var output1 = FindJudge(3, m);
+            var output = LeftMostColumnWithOne(bm);
+
         }
 
-        public int FindJudge(int N, int[][] trust)
-        {
 
-
-            Dictionary<int, HashSet<int>> map = new Dictionary<int, HashSet<int>>();
-            HashSet<int> pset = new HashSet<int>();
-            for (int i = 1; i <= N; i++)
-            {
-                map.Add(i, new HashSet<int>());
-            }
-
-            foreach (var item in trust)
-            {
-                pset.Add(item[0]);
-                map[item[1]].Add(item[0]);
-            }
-            
-            foreach( var item in map)
-            {
-                if (item.Value.Count == N - 1)
-                {
-                    if (!pset.Contains(item.Key))
-                        return item.Key;
-                }
-            }
-            return -1;
-        }
 
         BinaryMatrix bm;
-        int r;
-        int c;
-        int curr;
-        int pre=-1;
+
         public int LeftMostColumnWithOne(BinaryMatrix binaryMatrix)
         {
-            bm = binaryMatrix;
+       
             var dia = binaryMatrix.Dimensions();
-            r = dia[0]-1;
-            c = dia[1]-1;
-            pre = -1;
-            return Helperc(0, c);
-        }
-
-        int Helperc(int s, int e)
-        {
-
-            if (s <= e)
+            int r = dia[0] - 1;
+            int c = dia[1] - 1;
+            int lastClouindx = c;
+            for (int i = 0; i < r; i++)
             {
-                if (pre >= 0)
-                    return pre;
-                var mid = s + (e - s) / 2;
-                curr = Helpercell(mid, 0, c);
-                if (curr >= 0)
+                for (int j = lastClouindx; j > 0; j--)
                 {
-                    pre = mid;
-                    return Helperc(s, mid - 1);
+                    if (binaryMatrix.Get(i, j) == 1)
+                    {
+                        lastClouindx = j;
+                    }
+                    else
+                        break;
                 }
-                return Helperc(mid + 1, e);
             }
-            return -1;
+            return lastClouindx==c?-1: lastClouindx+1;
         }
+
+
 
         int Helpercell(int c, int s, int e)
         {
@@ -95,7 +61,7 @@ new int[]{2,3},
 
             var mid = s + (e - s) / 2;
 
-            if (bm.Get(mid,c) == 1)
+            if (bm.Get(mid, c) == 1)
                 return Helpercell(c, s, mid - 1);
             return Helpercell(c, mid + 1, e);
 
@@ -105,7 +71,7 @@ new int[]{2,3},
         {
             int[][] bm;
             int col;
-            public BinaryMatrix(int m,int n)
+            public BinaryMatrix(int m, int n)
             {
                 bm = new int[m][];
                 col = n;
