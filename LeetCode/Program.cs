@@ -55,7 +55,7 @@ namespace LeetCode
         //private static string result;
         public static void Main()
          {
-            var addTn = new Tiles();
+            var addTn = new RotateMatrix();
             addTn.Run();
             TestStatic t = new TestStatic();
             t.Print();
