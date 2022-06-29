@@ -9,8 +9,23 @@ namespace LeetCode.VMware
     {
         public override void Run()
         {
+            double? x = null;
+            var y = (decimal?)x;
             base.Run();
-            var len = LongestStrChain(new string[] {"ksqvsyq", "ks", "kss", "czvh", "zczpzvdhx", "zczpzvh", "zczpzvhx", "zcpzvh", "zczvh", "gr", "grukmj", "ksqvsq", "gruj", "kssq", "ksqsq", "grukkmj", "grukj", "zczpzfvdhx", "gru" });
+            var len = LongestStrChain1(new string[] {"ksqvsyq", "ks", "kss", "czvh", "zczpzvdhx", "zczpzvh", "zczpzvhx", "zcpzvh", "zczvh", "gr", "grukmj", "ksqvsq", "gruj", "kssq", "ksqsq", "grukkmj", "grukj", "zczpzfvdhx", "gru" });
+        }
+        public int LongestStrChain1(string[] words)
+        {
+            var dic = new Dictionary<string, int>();
+            foreach (var word in words.OrderBy(w => w.Length))
+                for (int i = 0; i < word.Length; i++)
+                {
+                    string word2 = word.Remove(i, 1);
+                    dic[word] = Math.Max(dic.ContainsKey(word) ? dic[word] : 1,
+                        dic.ContainsKey(word2) ? dic[word2] + 1 : 1);
+                }
+
+            return dic.Values.Max();
         }
         Dictionary<int, HashSet<string>> map = new Dictionary<int, HashSet<string>>();
         int maxLen = 0;
