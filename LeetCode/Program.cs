@@ -60,7 +60,7 @@ namespace LeetCode
         //private static string result;
         public static void Main()
          {
-            var addTn = new LongestIncreasingSubsequence();
+            var addTn = new Last_Stone_Weight_II();
                        addTn.Run();
             TestStatic t = new TestStatic();
             t.Print();
