@@ -10,7 +10,8 @@ namespace LeetCode._100LikedQuestion.Medium
     public class LRUCache : BaseClass
     {
         /// <summary>
-        /// double linked list is that the node can remove itself without other reference.  it takes constant time to add and remove nodes from the head or tail.
+        /// double linked list is that the node can remove itself without other reference. 
+        /// it takes constant time to add and remove nodes from the head or tail.
         /// </summary>
 
         static Object LOCK;

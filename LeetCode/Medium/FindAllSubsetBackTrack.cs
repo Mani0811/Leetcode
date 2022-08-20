@@ -20,7 +20,7 @@ namespace LeetCode.Medium
             //bcak track
             res = new List<IList<int>>();
             BackTrack(new List<int>(), nums, 0);
-            return res;            
+            return res;
         }
 
         public void Backtrack(List<int> tempList, int[] nums, int start)
@@ -28,7 +28,7 @@ namespace LeetCode.Medium
             var x = new List<int>();
             x.AddRange(tempList);
             res.Add(x);
-            for(int i=start; i<nums.Length;i++)
+            for (int i = start; i < nums.Length; i++)
             {
                 tempList.Add(nums[i]);
                 Backtrack(tempList, nums, i + 1);
@@ -44,13 +44,13 @@ namespace LeetCode.Medium
             res.Add(list);
             for (int i = start; i < nums.Length; i++)
             {
-                if (i> start && nums[i- 1] == nums[i]) continue;
+                if (i > start && nums[i - 1] == nums[i]) continue;
                 tempList.Add(nums[i]);
                 BackTrack(tempList, nums, i + 1);
                 tempList.Remove(nums[i]);
             }
         }
 
-        
+
     }
 }

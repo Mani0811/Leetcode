@@ -55,12 +55,10 @@ namespace LeetCode
     
     class Program
     {
-       
-
         //private static string result;
         public static void Main()
          {
-            var addTn = new Last_Stone_Weight_II();
+            var addTn = new Recover_Binary_Search_Tree();
                        addTn.Run();
             TestStatic t = new TestStatic();
             t.Print();

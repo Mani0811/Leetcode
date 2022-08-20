@@ -9,13 +9,69 @@ namespace LeetCode
         public override void Run()
         {
 
-            int total = 13;
-            int[] coins = { 7, 3, 2, 6 };
-            int bottomUpValue = MinimumCoinBottomUp(total, coins);
+            int total = 11;
+            int[] coins = { 5, 1, 2 };
+            int bottomUpValue = CoinChangenew2(total, coins);
             var map = new Dictionary<int, int>();
             var topDownValue = minimumCoinTopDown(total, coins, map);
             Console.WriteLine($"Bottom up and top down result {bottomUpValue} and {topDownValue}");
         }
+
+        public int CoinChangenew2(int a, int[] coins)
+        {
+            int[] dp = new int[a + 1];
+            for (int i = 1; i < dp.Length; i++)
+            {
+                dp[i] = dp.Length;
+                for (int j = 0; j < coins.Length; j++)
+                {
+                    if (i >= coins[j]) dp[i] = Math.Min(dp[i], dp[i - coins[j]] + 1);
+                }
+            }
+            return dp[a] == dp.Length ? -1 : dp[a];
+        }
+
+    
+        public int CoinChangenew( int a, int[] coins)
+        {
+            Array.Sort(coins);
+            var n = coins.Length;
+            var dp = new int[n + 1, a + 1];
+            for (int i = 0; i <= n; i++)
+            {
+                for (int j = 0; j <= a; j++)
+                {
+                    dp[i, j] = int.MaxValue - 1;
+                }
+            }
+            for (int i = 0; i <= n; i++)
+            {
+                dp[i, 0] = 0;
+            }
+
+            for (int i = 1; i <= n; i++)
+            {
+                for (int j = 1; j <= a; j++)
+                {
+                    if (j < coins[i - 1])
+                        dp[i, j] = dp[i - 1, j];
+                    else
+                    {
+                        if (dp[i, j - coins[i - 1]] != int.MaxValue)
+                        {
+                            var take = 1 + dp[i, j - coins[i - 1]];
+                            var leave = dp[i - 1, j];
+
+                            dp[i, j] = Math.Min(take, leave);
+                        }
+
+                    }
+                }
+            }
+
+            return dp[n, a] == int.MaxValue - 1 ? -1 : dp[n, a];
+        }
+
 
         public int minimumCoinTopDown(int total, int[] coins, Dictionary<int, int> map)
         {

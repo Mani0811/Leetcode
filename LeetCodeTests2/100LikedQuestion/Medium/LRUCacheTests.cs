@@ -1,8 +1,4 @@
 ﻿using Xunit;
-using LeetCode._100LikedQuestion.Medium;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace LeetCode._100LikedQuestion.Medium.Tests
 {
@@ -18,7 +14,7 @@ namespace LeetCode._100LikedQuestion.Medium.Tests
         [Fact()]
         public void LRUCacheTest()
         {
-           
+
         }
 
         [Fact()]
